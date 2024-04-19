@@ -25,7 +25,7 @@
         <module>heima-leadnews-feign-api</module>
         <module>heima-leadnews-service</module>
         <module>heima-leadnews-gateway</module>
-        <module>heima-leadnews-gateway/heima-leadnews-app-gateway</module>
+        <module>heima-leadnews-gateway</module>
     </modules>
 
     <!--属性配置相关-->
