@@ -6,7 +6,17 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.200.130:8848
+        server-addr: 121.37.42.142:8848
+        namespace: leadnews
+        username: admin
+        password: 1024KangYong
       config:
-        server-addr: 192.168.200.130:8848
+        server-addr: 121.37.42.142:8848
         file-extension: yml
+        namespace: leadnews
+        username: admin
+        password: 1024KangYong
+management:
+  health:
+    redis:
+      enabled: false
