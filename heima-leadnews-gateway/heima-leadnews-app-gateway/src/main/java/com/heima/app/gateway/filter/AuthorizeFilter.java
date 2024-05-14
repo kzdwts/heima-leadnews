@@ -2,6 +2,7 @@ package com.heima.app.gateway.filter;
 
 import com.heima.app.gateway.util.AppJwtUtil;
 import io.jsonwebtoken.Claims;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
@@ -9,16 +10,19 @@ import org.springframework.core.Ordered;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
+import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 /**
- * 令牌过滤
+ * 全局过滤器
  *
  * @author Kang Yong
  * @date 2024/4/19
  * @since 1.0.0
  */
+@Slf4j
+@Component
 public class AuthorizeFilter implements Ordered, GlobalFilter {
 
     @Override
@@ -32,7 +36,6 @@ public class AuthorizeFilter implements Ordered, GlobalFilter {
             //放行
             return chain.filter(exchange);
         }
-
 
         //3.获取token
         String token = request.getHeaders().getFirst("token");
@@ -65,7 +68,9 @@ public class AuthorizeFilter implements Ordered, GlobalFilter {
     /**
      * 优先级设置  值越小  优先级越高
      *
-     * @return
+     * @return {@link int}
+     * @author Kang Yong
+     * @date 2024/5/14
      */
     @Override
     public int getOrder() {

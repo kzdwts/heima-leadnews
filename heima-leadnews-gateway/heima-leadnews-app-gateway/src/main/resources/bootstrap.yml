@@ -1,0 +1,22 @@
+server:
+  port: 51601
+spring:
+  application:
+    name: leadnews-app-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 121.37.42.142:8848
+        namespace: leadnews
+        username: admin
+        password: 1024KangYong
+      config:
+        server-addr: 121.37.42.142:8848
+        file-extension: yml
+        namespace: leadnews
+        username: admin
+        password: 1024KangYong
+management:
+  health:
+    redis:
+      enabled: false
