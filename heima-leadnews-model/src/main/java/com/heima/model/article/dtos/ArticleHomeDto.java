@@ -19,7 +19,7 @@ public class ArticleHomeDto {
     // 最小时间
     private Date minBehotTime;
     // 分页size
-    private Integer size;
+    private Integer size = 10;
     // 频道ID
     private String tag;
 }
