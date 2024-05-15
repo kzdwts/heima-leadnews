@@ -21,4 +21,22 @@ public interface ApUserService extends IService<ApUser> {
      * @date 2024/5/14
      */
     R login(LoginDto dto);
+
+    /**
+     * 测试异步线程
+     *
+     * @return {@link R}
+     * @author Kang Yong
+     * @date 2024/5/15
+     */
+    R<Void> addNewUserDemo(String name, Integer pNum);
+
+    /**
+     * 测试 同步执行
+     *
+     * @return {@link R}
+     * @author Kang Yong
+     * @date 2024/5/15
+     */
+    R<Void> addNewUserDemo2(String name, Integer pNum);
 }

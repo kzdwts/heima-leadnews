@@ -1,5 +1,6 @@
 package com.heima.user.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.heima.model.common.dtos.R;
@@ -9,20 +10,20 @@ import com.heima.model.user.pojos.ApUser;
 import com.heima.user.mapper.ApUserMapper;
 import com.heima.user.service.ApUserService;
 import com.heima.utils.common.AppJwtUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.logging.Handler;
+import java.util.*;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * @author kangy
  * @description 针对表【ap_user(APP用户信息表)】的数据库操作Service实现
  * @createDate 2024-05-09 15:42:36
  */
+@Slf4j
 @Service
 public class ApUserServiceImpl extends ServiceImpl<ApUserMapper, ApUser>
         implements ApUserService {
@@ -61,6 +62,68 @@ public class ApUserServiceImpl extends ServiceImpl<ApUserMapper, ApUser>
             return R.okResult(map);
         }
     }
+
+    @Override
+    public R addNewUserDemo(String name, Integer pNum) {
+        log.info("ApUserServiceImpl[addNewUserDemo]===START==={}", System.currentTimeMillis());
+        List<CompletableFuture<Void>> futures = new ArrayList<>();
+        for (int i = 0; i < pNum; i++) {
+            CompletableFuture<Void> future = saveNewUser(name, i);
+            futures.add(future);
+        }
+        log.info("ApUserServiceImpl[addNewUserDemo]===END==={}", System.currentTimeMillis());
+        return R.okResult();
+    }
+
+    @Override
+    public R<Void> addNewUserDemo2(String name, Integer pNum) {
+        log.info("ApUserServiceImpl[addNewUserDemo]===START==={}", System.currentTimeMillis());
+
+        for (int i = 0; i < pNum; i++) {
+            ApUser user = new ApUser();
+
+            user.setSalt(name + i);
+            user.setName(name + i);
+            user.setPassword(name + i);
+            user.setPhone(name + i);
+            user.setImage(name + i);
+            user.setCreatedTime(new Date());
+
+            this.save(user);
+            log.info("ApUserServiceImpl[saveNewUser]:保存用户成功{}", JSON.toJSONString(user));
+
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        log.info("ApUserServiceImpl[addNewUserDemo]===END==={}", System.currentTimeMillis());
+        return R.okResult();
+    }
+
+    private CompletableFuture<Void> saveNewUser(String name, int i) {
+        return CompletableFuture.runAsync(() -> {
+            ApUser user = new ApUser();
+
+            user.setSalt(name + i);
+            user.setName(name + i);
+            user.setPassword(name + i);
+            user.setPhone(name + i);
+            user.setImage(name + i);
+            user.setCreatedTime(new Date());
+
+            this.save(user);
+            log.info("ApUserServiceImpl[saveNewUser]:异步保存用户成功{}", JSON.toJSONString(user));
+
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
+
 }
 
 

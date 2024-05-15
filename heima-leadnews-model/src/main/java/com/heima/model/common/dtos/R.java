@@ -62,6 +62,11 @@ public class R<T> implements Serializable {
         return result;
     }
 
+    public static R okResult() {
+        R result = setAppHttpCodeEnum(AppHttpCodeEnum.SUCCESS, AppHttpCodeEnum.SUCCESS.getDesc());
+        return result;
+    }
+
     public static R errorResult(AppHttpCodeEnum enums) {
         return setAppHttpCodeEnum(enums, enums.getDesc());
     }
@@ -84,6 +89,11 @@ public class R<T> implements Serializable {
         return this;
     }
 
+    public R<?> ok() {
+        this.code = 200;
+        return this;
+    }
+
     public R<?> ok(Integer code, T data) {
         this.code = code;
         this.data = data;
@@ -94,11 +104,6 @@ public class R<T> implements Serializable {
         this.code = code;
         this.data = data;
         this.msg = msg;
-        return this;
-    }
-
-    public R<?> ok(T data) {
-        this.data = data;
         return this;
     }
 

@@ -6,10 +6,7 @@ import com.heima.user.service.ApUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * App用户登录
@@ -31,4 +28,16 @@ public class ApUserLoginController {
     public R login(@RequestBody LoginDto dto) {
         return apUserService.login(dto);
     }
+
+
+    @PostMapping("/addNewUserDemo")
+    public R<Void> addNewUserDemo(@RequestParam("name") String name, @RequestParam("pNum") Integer pNum) {
+        return apUserService.addNewUserDemo(name, pNum);
+    }
+
+    @PostMapping("/addNewUserDemo2")
+    public R<Void> addNewUserDemo2(@RequestParam("name") String name, @RequestParam("pNum") Integer pNum) {
+        return apUserService.addNewUserDemo2(name, pNum);
+    }
+
 }
