@@ -26,6 +26,7 @@
         <module>heima-leadnews-service</module>
         <module>heima-leadnews-gateway</module>
         <module>heima-leadnews-gateway</module>
+        <module>heima-leadnews-test</module>
     </modules>
 
     <!--属性配置相关-->
