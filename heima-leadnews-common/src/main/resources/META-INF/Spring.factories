@@ -1,5 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.heima.common.swagger.SwaggerConfiguration
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.heima.common.swagger.Swagger2Configuration, \
-  com.heima.common.swagger.SwaggerConfiguration
