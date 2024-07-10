@@ -48,9 +48,7 @@ public class ApArticle implements Serializable {
 
     /**
      * 文章布局
-            0 无图文章
-            1 单图文章
-            2 多图文章
+            0:无图文章, 1:单图文章, 2:多图文章
      */
     private Integer layout;
 

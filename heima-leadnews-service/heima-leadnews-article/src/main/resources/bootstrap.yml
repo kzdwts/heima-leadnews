@@ -20,3 +20,9 @@ management:
   health:
     redis:
       enabled: false
+minio:
+  endpoint: http://121.37.42.142:9000 # web端访问端口是9090，api访问是9000
+  readPath: http://121.37.42.142:9000
+  bucket: leadnews
+  access_key: MinioAdmin
+  secret_key: 1024KangYong@Minio
