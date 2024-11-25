@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generator.mapper.WmNewsStatisticsMapper">
+
+    <resultMap id="BaseResultMap" type="com.heima.model.wemedia.pojos.WmNewsStatistics">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="userId" column="user_id" jdbcType="INTEGER"/>
+            <result property="article" column="article" jdbcType="INTEGER"/>
+            <result property="readCount" column="read_count" jdbcType="INTEGER"/>
+            <result property="comment" column="comment" jdbcType="INTEGER"/>
+            <result property="follow" column="follow" jdbcType="INTEGER"/>
+            <result property="collection" column="collection" jdbcType="INTEGER"/>
+            <result property="forward" column="forward" jdbcType="INTEGER"/>
+            <result property="likes" column="likes" jdbcType="INTEGER"/>
+            <result property="unlikes" column="unlikes" jdbcType="INTEGER"/>
+            <result property="unfollow" column="unfollow" jdbcType="INTEGER"/>
+            <result property="burst" column="burst" jdbcType="VARCHAR"/>
+            <result property="createdTime" column="created_time" jdbcType="DATE"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,user_id,article,
+        read_count,comment,follow,
+        collection,forward,likes,
+        unlikes,unfollow,burst,
+        created_time
+    </sql>
+</mapper>

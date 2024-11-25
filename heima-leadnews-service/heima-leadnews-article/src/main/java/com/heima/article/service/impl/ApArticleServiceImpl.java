@@ -52,8 +52,7 @@ public class ApArticleServiceImpl extends ServiceImpl<ApArticleMapper, ApArticle
         List<ApArticle> apArticles = apArticleMapper.loadArticleList(dto, loadtype);
 
         //3.结果封装
-        R responseResult = R.okResult(apArticles);
-        return responseResult;
+        return R.okResult(apArticles);
     }
 }
 

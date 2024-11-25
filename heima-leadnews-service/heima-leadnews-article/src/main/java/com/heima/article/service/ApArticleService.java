@@ -5,6 +5,8 @@ import com.heima.model.article.pojos.ApArticle;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.heima.model.common.dtos.R;
 
+import java.util.List;
+
 /**
 * @author kangy
 * @description 针对表【ap_article(文章信息表，存储已发布的文章)】的数据库操作Service
@@ -18,6 +20,6 @@ public interface ApArticleService extends IService<ApArticle> {
      * @param dto
      * @return
      */
-    R load(Short loadtype, ArticleHomeDto dto);
+    R<List<ApArticle>> load(Short loadtype, ArticleHomeDto dto);
 
 }

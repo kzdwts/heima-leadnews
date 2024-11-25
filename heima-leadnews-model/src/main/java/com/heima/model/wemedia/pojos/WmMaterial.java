@@ -1,4 +1,4 @@
-package com.heima.model.article.pojos;
+package com.heima.model.wemedia.pojos;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -9,12 +9,12 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- * APP文章作者信息表
- * @TableName ap_author
+ * 自媒体图文素材信息表
+ * @TableName wm_material
  */
-@TableName(value ="ap_author")
+@TableName(value ="wm_material")
 @Data
-public class ApAuthor implements Serializable {
+public class WmMaterial implements Serializable {
     /**
      * 主键
      */
@@ -22,32 +22,31 @@ public class ApAuthor implements Serializable {
     private Integer id;
 
     /**
-     * 作者名称
+     * 自媒体用户ID
      */
-    private String name;
+    private Integer userId;
 
     /**
-     * 0 爬取数据
-            1 签约合作商
-            2 平台自媒体人
-            
+     * 图片地址
+     */
+    private String url;
+
+    /**
+     * 素材类型
+            0 图片
+            1 视频
      */
     private Integer type;
 
     /**
-     * 社交账号ID
+     * 是否收藏
      */
-    private Integer userId;
+    private Integer isCollection;
 
     /**
      * 创建时间
      */
     private Date createdTime;
-
-    /**
-     * 自媒体账号
-     */
-    private Integer wmUserId;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

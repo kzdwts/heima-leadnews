@@ -9,3 +9,10 @@ mybatis-plus:
   mapper-locations: classpath*:mapper/*.xml
   # 设置别名包扫描路径，通过该属性可以给包中的类注册别名
   type-aliases-package: com.heima.model.media.pojos
+
+minio:
+  access_key: MinioAdmin
+  secret_key: 1024KangYong@Minio
+  bucket_name: leadnews
+  endpoint: http://121.37.42.142:9000 # web端访问端口是9090，api访问是9000
+  readPath: http://121.37.42.142:9090 # web端访问端口是9090，api访问是9000
